@@ -2,7 +2,7 @@
 This crowd counting system is based on IIM algorithm
 
 # Crowd Counting Model
-The crowd counting model I implemented is based on [Gao](https://github.com/taohan10200/IIM)'s work. 
+The crowd counting model I have implemented is based on [Gao](https://github.com/taohan10200/IIM)'s work. 
 And also, the size of the latest state model I finally got is over 100M, 
 so I upload it to google drive. If you need my pretrained model, please click [Google Drive Link](https://drive.google.com/file/d/1JZdV7nN87vO-KBmnFCGAjYbO98s0s4Bp/view?usp=sharing) to download it and 
 put it under the `latest_model` folder(`/GraduationProject/myapp/IIM/latest_model/`). 
