@@ -1,6 +1,9 @@
 # GraduationProject
 This crowd counting system is based on IIM algorithm
 
+## Display
+![数据可视化综合展板](/数据可视化综合展板.png)
+
 # Crowd Counting Model
 The crowd counting model I have implemented is based on [Gao](https://github.com/taohan10200/IIM)'s work. 
 Because the size of the latest state model I finally got is over 100M, 
