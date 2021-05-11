@@ -333,3 +333,175 @@ def data_visual(request):
         response['error_num'] = 1
 
     return JsonResponse(response)
+
+def data_region_visual(request):
+    response = {}
+    video_name = request.GET.get('video_name')
+    print(video_name)
+    try:
+        if video_name == 'test.mp4':
+            analysisTxt = 'NWPU_HR_Net_video_list.txt'
+        elif video_name == 'TownCentreXVID.mp4':
+            analysisTxt = 'NWPU_HR_Net_video1_list.txt'
+        elif video_name == 'acvis09-5950.mp4':
+            analysisTxt = 'NWPU_HR_Net_video_acvis_list.txt'
+        elif video_name == '00011.mp4':
+            analysisTxt = 'NWPU_HR_Net_video_00011_list.txt'
+
+        file_path = 'E:/Workspaces/GraduationProject/CrowdCountingSystem/myapp/IIM/saved_exp_results/' + analysisTxt
+
+        if video_name == 'acvis09-5950.mp4':
+            with open(file_path, 'r') as fp:
+                frame = 0  # 每25帧算1秒
+                count = 0  # 每一秒进行计数
+                response['regionValue'] = []
+                region0 = region1 = region2 = region3 = region4 = region5 = 0
+                # 循环读取每一行
+                for line in fp.readlines():
+                    frame += 1
+                    count += int(line.split(' ')[1])
+                    if frame == 25:
+                        if count // 30 < 5:
+                            region0 += 1
+                        elif count // 30 < 10:
+                            region1 += 1
+                        elif count // 30 < 20:
+                            region2 += 1
+                        elif count // 30 < 30:
+                            region3 += 1
+                        elif count // 30 < 40:
+                            region4 += 1
+                        else:
+                            region5 += 1
+                        # 获取操作信息
+                        # print(count // 30)
+                        count = 0
+                        frame = 0
+                response['regionValue'].append(region0)
+                response['regionValue'].append(region1)
+                response['regionValue'].append(region2)
+                response['regionValue'].append(region3)
+                response['regionValue'].append(region4)
+                response['regionValue'].append(region5)
+        else:
+            with open(file_path, 'r') as fp:
+                frame = 0  # 每30帧算1秒
+                count = 0  # 每一秒进行计数
+                response['regionValue'] = []
+                region0 = region1 = region2 = region3 = region4 = region5 = 0
+                # 循环读取每一行
+                for line in fp.readlines():
+                    frame += 1
+                    count += int(line.split(' ')[1])
+                    if frame == 30:
+                        if count // 30 < 5:
+                            region0 += 1
+                        elif count // 30 < 10:
+                            region1 += 1
+                        elif count // 30 < 20:
+                            region2 += 1
+                        elif count // 30 < 30:
+                            region3 += 1
+                        elif count // 30 < 40:
+                            region4 += 1
+                        else:
+                            region5 += 1
+                        count = 0
+                        frame = 0
+                response['regionValue'].append(region0)
+                response['regionValue'].append(region1)
+                response['regionValue'].append(region2)
+                response['regionValue'].append(region3)
+                response['regionValue'].append(region4)
+                response['regionValue'].append(region5)
+
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        print(e)
+        response['msg'] = 'false'
+        response['error_num'] = 1
+
+    return JsonResponse(response)
+
+def max_min_visual(request):
+    response = {}
+    video_name = request.GET.get('video_name')
+    print(video_name)
+    try:
+        if video_name == 'test.mp4':
+            analysisTxt = 'NWPU_HR_Net_video_list.txt'
+        elif video_name == 'TownCentreXVID.mp4':
+            analysisTxt = 'NWPU_HR_Net_video1_list.txt'
+        elif video_name == 'acvis09-5950.mp4':
+            analysisTxt = 'NWPU_HR_Net_video_acvis_list.txt'
+        elif video_name == '00011.mp4':
+            analysisTxt = 'NWPU_HR_Net_video_00011_list.txt'
+
+        file_path = 'E:/Workspaces/GraduationProject/CrowdCountingSystem/myapp/IIM/saved_exp_results/' + analysisTxt
+
+        if video_name == 'acvis09-5950.mp4':
+            with open(file_path, 'r') as fp:
+                frame = 0  # 每25帧算1秒
+                count = 0  # 每一秒进行计数
+                max = 0
+                min = 10000
+                # 循环读取每一行
+                for line in fp.readlines():
+                    frame += 1
+                    count += int(line.split(' ')[1])
+                    if frame == 25:
+                        if count // 30 > max:
+                            max = count // 30
+                        if count // 30 < min:
+                            min = count // 30
+                        # 获取操作信息
+                        # print(count // 30)
+                        count = 0
+                        frame = 0
+                response['maxValue'] = max
+                response['minValue'] = min
+        else:
+            with open(file_path, 'r') as fp:
+                frame = 0  # 每30帧算1秒
+                count = 0  # 每一秒进行计数
+                max = 0
+                min = 10000
+                # 循环读取每一行
+                for line in fp.readlines():
+                    frame += 1
+                    count += int(line.split(' ')[1])
+                    if frame == 30:
+                        if count // 30 > max:
+                            max = count // 30
+                        if count // 30 < min:
+                            min = count // 30
+                        count = 0
+                        frame = 0
+                response['maxValue'] = max
+                response['minValue'] = min
+
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        print(e)
+        response['msg'] = 'false'
+        response['error_num'] = 1
+
+    return JsonResponse(response)
+
+@require_http_methods(["GET"])
+def manager_status_visual(request):
+    response = {}
+    try:
+        valid_managers = Manager.objects.filter(mg_state=1)
+        invalid_managers = Manager.objects.filter(mg_state=0)
+        response['valid'] = len(valid_managers)
+        response['invalid'] = len(invalid_managers)
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+
+    return JsonResponse(response)

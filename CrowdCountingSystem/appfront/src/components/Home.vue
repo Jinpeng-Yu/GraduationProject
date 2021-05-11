@@ -88,6 +88,11 @@
                     authName: "数据统计",
                     path: "report",
                   },
+                  {
+                    id: 132,
+                    authName: "综合展示",
+                    path: "complex",
+                  }
                 ]
               },
             ],
@@ -99,6 +104,7 @@
               '120': 'el-icon-video-camera-solid',
               '130': 'el-icon-s-marketing',
               '131': 'el-icon-s-help',
+              '132': 'el-icon-s-claim',
             },
             // 默认不折叠
             isCollapse: false,

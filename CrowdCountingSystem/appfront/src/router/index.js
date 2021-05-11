@@ -8,6 +8,7 @@ import Users from "../components/user/Users";
 import Video from "../components/report/Video";
 import Report from "../components/report/Report";
 import Trends from "../components/report/Trends";
+import Complex from "../components/report/Complex";
 
 Vue.use(Router)
 
@@ -25,6 +26,7 @@ export default new Router({
         { path: '/videos', component: Video},
         { path: '/trends', component: Trends},
         { path: '/report', component: Report},
+        { path: '/complex', component: Complex},
       ]
     },
   ]

@@ -15,4 +15,7 @@ urlpatterns = [
     url(r'upload_video$', views.upload_video),
     url(r'analyse_video', views.analyse_video),
     url(r'data_visual', views.data_visual),
+    url(r'data_region_visual', views.data_region_visual),
+    url(r'max_min_visual', views.max_min_visual),
+    url(r'manager_status_visual',views.manager_status_visual),
 ]
