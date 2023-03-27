@@ -1,5 +1,6 @@
 # GraduationProject
 This crowd counting system is based on IIM algorithm
+Reference Paper: [Density Map Regression Guided Detection Network for RGB-D Crowd Counting](https://openaccess.thecvf.com/content_CVPR_2019/papers/Lian_Density_Map_Regression_Guided_Detection_Network_for_RGB-D_Crowd_Counting_CVPR_2019_paper.pdf)
 
 ## Display
 ![数据可视化综合展板](/数据可视化综合展板.png)
